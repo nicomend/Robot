@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/HamsterAPIClientOpenCVImageExample.cpp \
 ../src/HamsterAPIClientSensorsExample.cpp 
 
 OBJS += \
+./src/HamsterAPIClientOpenCVImageExample.o \
 ./src/HamsterAPIClientSensorsExample.o 
 
 CPP_DEPS += \
+./src/HamsterAPIClientOpenCVImageExample.d \
 ./src/HamsterAPIClientSensorsExample.d 
 
 
