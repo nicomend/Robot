@@ -24,7 +24,7 @@ Particle::Particle(Position pos, float belief, Map* map)
 	positionPoint.y = _position.getRow();
 
 	// run until we get particle not on block
-	while (this->_map->checkIfCellIsOccupied(positionPoint))
+	while (this->_map->checkIfGridCellIsOccupied(positionPoint))
 	{
 		this->_position = createPositionRandomly(pos);
 		positionPoint.x = _position.getCol();

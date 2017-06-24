@@ -1,36 +1,41 @@
 /*
- * Map.h
- *
- *  Created on: April 16, 2016
- *      Author: Eylam Milner 311212419
- *      		Lucas Aids	 324392992
+ * RobotMap.h
  */
 #include <HamsterAPIClientCPP/Hamster.h>
 
-#ifndef MAP_H_
-#define MAP_H_
+#ifndef ROBOTMAP_H_
+#define ROBOTMAP_H_
 
 #include <vector>
 #include <string>
 
 using namespace std;
 using namespace HamsterAPI;
+
 typedef struct point
 {
 	double x;
 	double y;
 }
 Point;
-
-class Map {
+class RobotMap {
 private:
+	cv::Mat matrix;
 	int robotSize;
+	unsigned int mapHeight;
+	unsigned int mapWidth;
+	int resulotion;
 
 public:
-	Map(int robotSize);
+	RobotMap(int robotSize);
+	int getResulotion();
 	cv::Mat inflateMap(Hamster* hamster);
-	virtual ~Map();
-	void paintCell(Point point, int r, int g, int b);
+	unsigned int getWidth() const;
+	unsigned int getHeight() const;
+	bool checkIfInflotedMapGridCellIsOccupied(Point point) const;
+	void paintGridCell(Point point, int r, int g, int b);
+	bool checkIfGridCellIsOccupied(Point point);
+	virtual ~RobotMap();
 };
 
-#endif /* MAP_H_ */
+#endif /* ROBOTMAP_H_ */

@@ -14,7 +14,7 @@
 //#include <iostream>
 //#include "AStarAlgorithm.h"
 //#include "ConfigurationManager.h"
-//#include "Cell.h"
+//#include "GridCell.h"
 //#include "WaypointManager.h"
 //#include "Lucatron.h"
 //
@@ -37,10 +37,10 @@
 //	Graph graph(configMgr.gridResolutionCM);
 //	graph.buildGraphFromMap(map);
 //
-//	Cell start = graph.getCellFromPoint(configMgr.robotStart);
-//	Cell goal = graph.getCellFromPoint(configMgr.goal);
+//	GridCell start = graph.getGridCellFromPoint(configMgr.robotStart);
+//	GridCell goal = graph.getGridCellFromPoint(configMgr.goal);
 //	AStarAlgorithm algo(graph.nodes, start, goal);
-//	vector<Cell> path = algo.StartAlgorithm();
+//	vector<GridCell> path = algo.StartAlgorithm();
 //	graph.paintPathOnMap(&map, path,255,0,0);
 //
 //	// Create a waypoint instance
