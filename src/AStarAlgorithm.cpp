@@ -1,12 +1,9 @@
 /*
  * AStarAlgorithm.cpp
- *
- *  Created on: May 27, 2016
- *      Author: colman
  */
 
 #include "AStarAlgorithm.h"
-
+using namespace std;
 AStarAlgorithm::AStarAlgorithm(vector<vector<Node> > graph, GridCell start, GridCell goal) {
 	this->graph = graph;
 	this->goal = goal;

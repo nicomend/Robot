@@ -7,7 +7,7 @@
 
 #ifndef WAYPOINTMANAGER_H_
 #define WAYPOINTMANAGER_H_
-#include "Map.h"
+#include "RobotMap.h"
 #include <set>
 #include "Graph.h"
 #include "math.h"

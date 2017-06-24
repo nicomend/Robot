@@ -8,7 +8,7 @@
 #include "WaypointManager.h"
 #include "Waypoint.h"
 #include "GridCell.h"
-#include "Map.h"
+#include "RobotMap.h"
 #include "Graph.h"
 #include <iostream>
 #include <fstream>

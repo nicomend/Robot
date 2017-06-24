@@ -11,7 +11,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Position.h"
-#include "Map.h"
+#include "RobotMap.h"
 class Particle {
 private:
 Position _position;

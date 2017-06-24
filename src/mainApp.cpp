@@ -29,7 +29,7 @@ int main() {
 				graph.buildGraphFromMap(robotMap);
 
 				GridCell startGridCell(0,0);
-				GridCell goalGridCell = new GridCell(5,2);
+				GridCell goalGridCell(5,2);
 				AStarAlgorithm algo(graph.nodes, startGridCell, goalGridCell);
 				vector<GridCell> path = algo.StartAlgorithm();
 				graph.paintPathOnMap(&robotMap, path,255,0,0);

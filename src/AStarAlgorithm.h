@@ -12,6 +12,7 @@
 #include "vector"
 #include "Graph.h"
 #include "math.h"
+#include "GridCell.h"
 
 class AStarAlgorithm {
 

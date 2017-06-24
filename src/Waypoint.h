@@ -8,7 +8,7 @@
 #ifndef WAYPOINT_H_
 #define WAYPOINT_H_
 #include "limits.h"
-#include "Map.h"
+#include "RobotMap.h"
 #include "GridCell.h"
 
 class Waypoint {
