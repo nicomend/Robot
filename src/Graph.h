@@ -25,7 +25,6 @@ Node;
 class Graph {
 private:
 	double	graphResolutionInCM;
-	double	resolutionRelation;
 public:
 	vector<vector<Node> > nodes;
 	void buildGraphFromMap(RobotMap map);

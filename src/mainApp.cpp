@@ -32,7 +32,9 @@ int main() {
 				GridCell goalGridCell(5,2);
 				AStarAlgorithm algo(graph.nodes, startGridCell, goalGridCell);
 				vector<GridCell> path = algo.StartAlgorithm();
+				cout << "Before Painting";
 				graph.paintPathOnMap(&robotMap, path,255,0,0);
+				cout << "After Painting";
 
 				// iterate through way points
 				for (int i=0; i<5; i++) {

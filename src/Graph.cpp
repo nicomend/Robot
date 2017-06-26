@@ -9,7 +9,6 @@
 
 Graph::Graph(double graphResolutionInCM) {
 	this->graphResolutionInCM = graphResolutionInCM;
-	this->resolutionRelation = 0;
 }
 
 Graph::~Graph() {
@@ -45,10 +44,11 @@ void Graph::buildGraphFromMap(RobotMap map)
 
 GridCell Graph::getGridCellFromPoint(Point point)
 {
-	int row = point.y / resolutionRelation;
-	int col = point.x / resolutionRelation;
-	GridCell GridCell(row,col);
-	return GridCell;
+	int row = point.y ;
+	int col = point.x;
+	GridCell gridCell(row,col);
+
+	return gridCell;
 }
 
 void Graph::paintPathOnMap(RobotMap *map, vector<GridCell> path, int r, int g, int b)
@@ -63,22 +63,17 @@ void Graph::paintPathOnMap(RobotMap *map, GridCell point, int r, int g, int b)
 {
 	Point current;
 
-	for (int y = point.row * resolutionRelation; y < (point.row * resolutionRelation) + resolutionRelation; y++)
-	{
-		for (int x = point.col * resolutionRelation; x < (point.col * resolutionRelation) + resolutionRelation; x++)
-		{
-			current.y = y;
-			current.x = x;
-			map->paintGridCell(current,r,g,b);
-		}
-	}
+	current.y = point.row;
+	current.x = point.col;
+	map->paintGridCell(current,r,g,b);
+
 }
 
 Point Graph::getPointFromGridCell(GridCell GridCell)
 {
 	Point point;
-	point.y = (GridCell.row * resolutionRelation) + (resolutionRelation / 2);
-	point.x = (GridCell.col * resolutionRelation) + (resolutionRelation / 2);
+	point.y = GridCell.row ;
+	point.x = GridCell.col;
 
 	return (point);
 }
