@@ -17,25 +17,6 @@ int RobotMap::getResulotion() {
 	return this->resulotion;
 }
 
-bool RobotMap::checkIfGridCellIsOccupied(Point point)
-{
-	// Initializing GridCell variables
-//	int c = (point.y * width + point.x) * 4;
-//	int r = pixels[c];
-//	int g = pixels[c + 1];
-//	int b = pixels[c + 2];
-//
-//	// If GridCell is occupied
-//	if (r == 0 && g == 0 && b == 0)
-//	{
-//		// return true value to the map
-//		return true;
-//	}
-
-	// if the GridCell is not occupied, return false value to the map
-	return false;
-}
-
 // Paints a cell on the map
 void RobotMap::paintGridCell(Point point, int r, int g, int b)
 {
@@ -48,10 +29,8 @@ void RobotMap::paintGridCell(Point point, int r, int g, int b)
 // Checking if a specific GridCell of the infloted map is occupied
 bool RobotMap::checkIfInflotedMapGridCellIsOccupied(Point point) const
 {
-
-
-	return ((this->matrix.at<cv::Vec3b>(point.y, point.x)[0] == 0) &&
-			(this->matrix.at<cv::Vec3b>(point.y, point.x)[1]==0) && (this->matrix.at<cv::Vec3b>(point.y, point.x)[2]==0));
+	return ((this->infaltedMatrix.at<cv::Vec3b>(point.y, point.x)[0]==0) &&
+			(this->infaltedMatrix.at<cv::Vec3b>(point.y, point.x)[1]==0) && (this->infaltedMatrix.at<cv::Vec3b>(point.y, point.x)[2]==0));
 }
 
 unsigned int RobotMap::getWidth() const
@@ -74,8 +53,9 @@ cv::Mat RobotMap::inflateMap(Hamster* hamster) {
 	int width = ogrid.getWidth();
 	int height = ogrid.getHeight();
 	cv::Vec3b pixel;
-	cv::Mat m = cv::Mat(width, height, CV_8UC3);
-	this->matrix = m;
+	this->matrix = cv::Mat(width, height, CV_8UC3);
+	this->infaltedMatrix = cv::Mat(width, height, CV_8UC3);
+
 	// Build the pixel mat
 	for (int i = 0; i < height; i++)
 		for (int j = 0; j < width; j++) {
@@ -93,20 +73,21 @@ cv::Mat RobotMap::inflateMap(Hamster* hamster) {
 				pixel[1] = 128;
 				pixel[2] = 128;
 			}
-			m.at<cv::Vec3b>(i, j) = pixel;
+			infaltedMatrix.at<cv::Vec3b>(i, j) = pixel;
+			matrix.at<cv::Vec3b>(i,j) = pixel;
 
 			if (ogrid.getCell(i, j) == CELL_OCCUPIED) {
 				for (int x = i - pixels; x < i + pixels; x++) {
 					for (int y = j - pixels; y < j + pixels; y++) {
-						m.at<cv::Vec3b>(x, y)[0] = 0;
-						m.at<cv::Vec3b>(x, y)[1] = 0;
-						m.at<cv::Vec3b>(x, y)[2] = 0;
+						infaltedMatrix.at<cv::Vec3b>(x, y)[0] = 0;
+						infaltedMatrix.at<cv::Vec3b>(x, y)[1] = 0;
+						infaltedMatrix.at<cv::Vec3b>(x, y)[2] = 0;
 					}
 				}
 			}
 		}
 
-	return m;
+	return matrix;
 }
 
 RobotMap::~RobotMap()

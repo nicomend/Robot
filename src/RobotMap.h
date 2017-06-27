@@ -21,6 +21,7 @@ Point;
 class RobotMap {
 private:
 	cv::Mat matrix;
+	cv::Mat infaltedMatrix;
 	int robotSize;
 	unsigned int mapHeight;
 	unsigned int mapWidth;
@@ -34,7 +35,6 @@ public:
 	unsigned int getHeight() const;
 	bool checkIfInflotedMapGridCellIsOccupied(Point point) const;
 	void paintGridCell(Point point, int r, int g, int b);
-	bool checkIfGridCellIsOccupied(Point point);
 	virtual ~RobotMap();
 };
 
