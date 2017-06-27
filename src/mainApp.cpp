@@ -19,7 +19,7 @@ int main() {
 		RobotMap robotMap(robotSizeCM);
 		cv::namedWindow("OccupancyGrid-view");
 
-		if (hamster->isConnected()) {
+		while (hamster->isConnected()) {
 			try {
 
 				cv::Mat matrix = robotMap.inflateMap(hamster);
@@ -28,8 +28,8 @@ int main() {
 				Graph graph(robotMap.getResulotion());
 				graph.buildGraphFromMap(robotMap);
 
-				GridCell startGridCell(0,0);
-				GridCell goalGridCell(5,2);
+				GridCell startGridCell(470,470);
+				GridCell goalGridCell(512,512);
 				AStarAlgorithm algo(graph.nodes, startGridCell, goalGridCell);
 				vector<GridCell> path = algo.StartAlgorithm();
 				cout << "Before Painting";
